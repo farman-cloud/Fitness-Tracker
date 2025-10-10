@@ -1,0 +1,6 @@
+# Root-level ignores (applies to everything)
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
