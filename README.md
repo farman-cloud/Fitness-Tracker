@@ -1,41 +1,71 @@
-# 🏋️ Health & Fitness Tracker (Under Development)
+# 🏋️ Health & Fitness Tracker
 
-This project **will be** a full-stack health and fitness tracking web application built using **React (frontend)** and **Spring Boot (backend)**.  
-The goal of the app is to help users track their fitness activities, monitor progress, and maintain a healthy lifestyle through personalized insights.
-
----
-
-## 🚀 Project Overview
-
-This is a collaborative project currently in its **initial development phase**.  
-The team plans to integrate core features gradually as development progresses.
-
-### 🔧 Planned Tech Stack
-- **Frontend:** React.js, HTML, CSS, JavaScript  
-- **Backend:** Spring Boot (Java)  
-- **Database:** PostgreSQL  
-- **Version Control:** Git & GitHub
+A full-stack health and fitness tracking web application built using **React** (frontend) and **Spring Boot** (backend). The goal of the app is to help users track their fitness activities, monitor progress, and maintain a healthy lifestyle.
 
 ---
 
-## 🧩 Planned Features
+## 🚀 Key Features & Status
 
-The following features are **planned** for future development:
+This project is a collaborative effort and is currently under active development.
 
-- User authentication and profile management  
-- Tracking daily workouts and activities  
-- Setting fitness goals and viewing progress statistics  
-- Integration with backend APIs for data storage and analytics  
-- Responsive design for both desktop and mobile users  
+- [x] **User Registration:** Backend API for new user creation.
+- [ ] **User Authentication:** Secure login/logout using JWT.
+- [ ] **Workout Logging:** Create, view, update, and delete workout sessions.
+- [ ] **Exercise Tracking:** Add specific exercises (sets, reps, weight) to a workout.
+- [ ] **Dashboard & Analytics:** View progress statistics and recent activity.
+- [ ] **User Profile Management:** View and update user details.
 
-*(Note: Features will evolve based on time, scope, and team discussions.)*
+---
+
+## 🔧 Tech Stack
+
+| Area | Technologies |
+| :--- | :--- |
+| **Frontend** | React.js, Vite, Axios |
+| **Backend** | Java 21, Spring Boot, Spring Web, Spring Data JPA, Spring Security |
+| **Database** | MySQL |
+| **Dev Tools** | Git, GitHub, Maven, Postman |
+
+---
+
+## 🏗️ Getting Started
+
+To run this project locally, you'll need to set up both the backend and frontend services.
+
+### **Backend Setup**
+
+1.  Clone the repository: `git clone <your-repo-url>`
+2.  Navigate to the backend directory: `cd Fitness-Tracker/backend`
+3.  Go to `src/main/resources`.
+4.  Duplicate the `application.properties.example` file and rename the copy to `application.properties`.
+5.  Open the new `application.properties` file and fill in your local MySQL database `username` and `password`.
+6.  Run the Spring Boot application using your IDE. The server will start on `http://localhost:8080`.
+
+### **Frontend Setup**
+
+1.  Navigate to the frontend directory: `cd Fitness-Tracker/frontend`
+2.  Install the necessary packages: `npm install`
+3.  Start the development server: `npm run dev`
+4.  The application will be available at `http://localhost:5173`.
+
+---
+
+## 🗺️ Development Roadmap
+
+Development is following a backend-first approach:
+
+1.  **Backend API Setup:** Build and test all required API endpoints.
+2.  **Database Integration:** Ensure robust data modeling and persistence.
+3.  **Frontend UI/UX Development:** Build the React components and pages.
+4.  **API Integration:** Connect the frontend to the backend services.
+5.  **Testing and Deployment:** Finalize testing and prepare for deployment.
 
 ---
 
 ## 👨‍💻 Team Members
 
 | Name | Role |
-|------|------|
+| :--- | :--- |
 | **Farman Ali** | Full Stack Developer |
 | **Aditya Ranjan** | Full Stack Developer |
 | **Aditya Singh Chauhan** | Full Stack Developer |
@@ -44,36 +74,6 @@ The following features are **planned** for future development:
 
 ### 🎯 Mentor
 - **Ayush Singh**
-
----
-
-## 🏗️ Current Status
-
-- ✅ Repository setup complete  
-- ✅ Boilerplate code added for frontend (React) and backend (Spring Boot)  
-- 🔜 Feature development and integration to begin soon  
-
----
-
-## 🧭 How to Run (will be updated later)
-
-Instructions to run the project locally will be added once the initial setup is completed for both frontend and backend.
-
----
-
-## 📅 Project Timeline
-
-Development will proceed in phases, starting with:
-1. Frontend UI design   
-2. Backend API setup
-3. Integration and database connection  
-4. Testing and deployment  
-
----
-
-## 📄 License
-This project is currently for **educational and collaborative purposes**.  
-License details will be added later as needed.
 
 ---
 
