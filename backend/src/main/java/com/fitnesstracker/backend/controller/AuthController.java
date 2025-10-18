@@ -1,6 +1,6 @@
 package com.fitnesstracker.backend.controller;
 
-import com.fitnesstracker.backend.dto.JwtAuthenticationResponse;
+import com.fitnesstracker.backend.dto.JWTAuthenticationResponse;
 import com.fitnesstracker.backend.dto.LoginRequest;
 import com.fitnesstracker.backend.dto.RegistrationRequest;
 import com.fitnesstracker.backend.entity.User;
@@ -25,7 +25,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JwtAuthenticationResponse> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<JWTAuthenticationResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authenticationService.login(request));
     }
 }

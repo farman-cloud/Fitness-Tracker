@@ -1,6 +1,6 @@
 package com.fitnesstracker.backend.service;
 
-import com.fitnesstracker.backend.dto.JwtAuthenticationResponse;
+import com.fitnesstracker.backend.dto.JWTAuthenticationResponse;
 import com.fitnesstracker.backend.dto.LoginRequest;
 import com.fitnesstracker.backend.dto.RegistrationRequest;
 import com.fitnesstracker.backend.entity.User;
@@ -17,7 +17,7 @@ public class AuthenticationService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtService jwtService;
+    private final JWTService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public User register(RegistrationRequest request) {
@@ -28,7 +28,7 @@ public class AuthenticationService {
         return userRepository.save(user);
     }
 
-    public JwtAuthenticationResponse login(LoginRequest request) {
+    public JWTAuthenticationResponse login(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
@@ -38,6 +38,6 @@ public class AuthenticationService {
 
         var jwt = jwtService.generateToken(user);
 
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        return JWTAuthenticationResponse.builder().token(jwt).build();
     }
 }
