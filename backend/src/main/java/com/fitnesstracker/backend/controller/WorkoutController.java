@@ -10,13 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.HttpStatus;
 
 import java.net.URI;
 
@@ -49,6 +50,17 @@ public class WorkoutController {
         String userEmail = authentication.getName();
         WorkoutResponse workout = workoutService.getWorkoutById(id, userEmail);
         return ResponseEntity.ok(workout);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<WorkoutResponse> updateWorkout(
+            @PathVariable Long id,
+            @Valid @RequestBody WorkoutRequest workoutRequest,
+            Authentication authentication
+    ) {
+        String userEmail = authentication.getName();
+        WorkoutResponse updatedWorkout = workoutService.updateWorkout(id, workoutRequest, userEmail);
+        return ResponseEntity.ok(updatedWorkout);
     }
 
     @DeleteMapping("/{id}")

@@ -101,4 +101,35 @@ public class WorkoutService {
 
         workoutRepository.delete(workout);
     }
+
+    @Transactional
+    public WorkoutResponse updateWorkout(Long workoutId, WorkoutRequest workoutRequest, String userEmail) {
+        Workout workout = workoutRepository.findById(workoutId)
+                .orElseThrow(() -> new ResourceNotFoundException("Workout not found with id: " + workoutId));
+
+        if (!workout.getUser().getEmail().equals(userEmail)) {
+            throw new UnauthorizedException("User does not have permission to update this workout.");
+        }
+
+        workout.setName(workoutRequest.getName());
+        workout.setDate(workoutRequest.getDate() != null ? workoutRequest.getDate() : workout.getDate()); // Keep old date if null
+
+        workout.getExercises().clear();
+
+        workoutRepository.flush();
+
+        for (ExerciseRequest exerciseRequest : workoutRequest.getExercises()) {
+            Exercise exercise = new Exercise();
+            exercise.setName(exerciseRequest.getName());
+            exercise.setSets(exerciseRequest.getSets());
+            exercise.setReps(exerciseRequest.getReps());
+            exercise.setWeight(exerciseRequest.getWeight());
+            exercise.setWorkout(workout);
+            workout.getExercises().add(exercise);
+        }
+
+        Workout updatedWorkout = workoutRepository.save(workout);
+
+        return mapWorkoutToResponse(updatedWorkout);
+    }
 }
