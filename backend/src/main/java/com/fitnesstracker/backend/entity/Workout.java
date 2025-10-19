@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 
 @Data
 @Entity
@@ -21,5 +23,13 @@ public class Workout {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user; // 3
+    private User user;
+
+    @OneToMany(
+            mappedBy = "workout",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    private List<Exercise> exercises = new ArrayList<>();
 }

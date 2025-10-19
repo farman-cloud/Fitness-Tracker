@@ -1,16 +1,22 @@
 package com.fitnesstracker.backend.controller;
 
-import com.fitnesstracker.backend.dto.WorkoutRequest;
-import com.fitnesstracker.backend.entity.Workout;
-import com.fitnesstracker.backend.service.WorkoutService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import com.fitnesstracker.backend.dto.WorkoutRequest;
+import com.fitnesstracker.backend.dto.WorkoutResponse;
+import com.fitnesstracker.backend.entity.Workout;
+import com.fitnesstracker.backend.service.WorkoutService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.net.URI;
 
@@ -33,5 +39,25 @@ public class WorkoutController {
         return ResponseEntity
                 .created(URI.create("/api/workouts/" + createdWorkout.getId()))
                 .body(createdWorkout);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<WorkoutResponse> getWorkoutById(
+            @PathVariable Long id,
+            Authentication authentication
+    ) {
+        String userEmail = authentication.getName();
+        WorkoutResponse workout = workoutService.getWorkoutById(id, userEmail);
+        return ResponseEntity.ok(workout);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteWorkout(
+            @PathVariable Long id,
+            Authentication authentication
+    ) {
+        String userEmail = authentication.getName();
+        workoutService.deleteWorkout(id, userEmail);
     }
 }
