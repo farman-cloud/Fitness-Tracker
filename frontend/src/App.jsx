@@ -1,13 +1,7 @@
-function App() {
-  return (
-    <>
-      <div className="flex justify-center items-center h-screen">
-        <h1 className="text-5xl font-semibold text-gray-500">
-          Hello Everyone !
-        </h1>
-      </div>
-    </>
-  );
+const App = () => {
+    return (
+        <div> Welcome to the Fitness Tracker App </div>
+    );
 }
 
 export default App;
