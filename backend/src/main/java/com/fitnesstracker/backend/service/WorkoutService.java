@@ -112,7 +112,7 @@ public class WorkoutService {
         }
 
         workout.setName(workoutRequest.getName());
-        workout.setDate(workoutRequest.getDate() != null ? workoutRequest.getDate() : workout.getDate()); // Keep old date if null
+        workout.setDate(workoutRequest.getDate() != null ? workoutRequest.getDate() : workout.getDate());
 
         workout.getExercises().clear();
 

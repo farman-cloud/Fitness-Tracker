@@ -25,6 +25,15 @@ public class User implements UserDetails {
 
     private String password;
 
+    @Column(nullable = true)
+    private Integer age;
+
+    @Column(nullable = true)
+    private Double weight;
+
+    @Column(nullable = true)
+    private Double height;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // To-do: Add roles.
